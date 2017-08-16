@@ -10,8 +10,8 @@ Before running anything on the cloud, check if the task runs locally by running 
 python -m trainer/4-convnet
 ```
 
-## Running a job
-On your Google cloud shell, make sure you have tensorflow and other libraries which you might require installed (scipy does not run on the shell due to resource constraints). Other libraries have to be installed similarly, the usual `pip install package` does not work. 
+## Preparation
+On your Google cloud shell, make sure you have tensorflow and other libraries which you might require installed. Other libraries have to be installed similarly, the usual `pip install package` does not work. 
 
 ```bash
 pip download tensorflow
@@ -23,6 +23,26 @@ Create the recommended structure, with an input/ and trainer/ folder as here on 
 gsutil cp gs://applicationfromscratchbucket/file_to_copy .
 ```
 The *copy_files* script contains a script which did just that for my example.
+
+
+The *setup.py* file contains the dependencies for your project. In this case we will require keras, h5py and scipy. Be aware that any project that uses scipy will not run on your Google Cloud shell due to resource constraints.
+```python
+from setuptools import find_packages
+from setuptools import setup
+
+REQUIRED_PACKAGES = ['scipy>=0.19','keras>=2.0.6','h5py>=2.7']
+
+setup(
+    name='trainer',
+    version='0.1',
+    install_requires=REQUIRED_PACKAGES,
+    packages=find_packages(),
+    include_package_data=True,
+    description='For applications which use tflearn and h5py packed data.')
+```
+
+
+## Running a job
 
 Next create the environmental variables, it is mandatory to choose a unique *JOB_NAME* each time you submit a job, hence you should re-run the first two lines before each job. It will also help you identify the output folders.
 
