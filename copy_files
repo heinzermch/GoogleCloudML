@@ -1,3 +1,10 @@
+#!/bin/bash
+# This script is suppsed to be run in the google shell to update the scripts
+# which will then be exectued in the cloud
+# The script supposes you are in the root of the project
+# The script set_variables is supposed to export the necessary environtal variables
+# in order for the gcloud command to be simple
+# We also suppose the files which are to be transfered from the bucket are at the root
 gsutil cp gs://applicationfromscratchbucket/4-convnet.py trainer/
 gsutil cp gs://applicationfromscratchbucket/5-resnext.py trainer/
 gsutil cp gs://applicationfromscratchbucket/6-densenet.py trainer/
