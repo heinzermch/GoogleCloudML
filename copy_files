@@ -1,0 +1,10 @@
+gsutil cp gs://applicationfromscratchbucket/4-convnet.py trainer/
+gsutil cp gs://applicationfromscratchbucket/5-resnext.py trainer/
+gsutil cp gs://applicationfromscratchbucket/6-densenet.py trainer/
+gsutil cp gs://applicationfromscratchbucket/cloudml-gpu.yaml trainer/
+gsutil cp gs://applicationfromscratchbucket/setup.py .
+gsutil cp gs://applicationfromscratchbucket/set_variables .
+gsutil cp gs://applicationfromscratchbucket/copy_files .
+chmod +x copy_files
+chmod +x set_variables
+
